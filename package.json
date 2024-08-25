@@ -1,0 +1,15 @@
+{
+  "name": "@nexys/openapi-client-generator",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "module": "true",
+  "scripts": {
+    "build": "tsc",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.8",
+    "typescript": "^5.5.4"
+  }
+}
