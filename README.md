@@ -1,5 +1,7 @@
 # openapi-client-generator
 
+[![Test Package](https://github.com/nexys-system/openapi-client-generator/actions/workflows/test.yml/badge.svg)](https://github.com/nexys-system/openapi-client-generator/actions/workflows/test.yml)
+
 A TypeScript-based library to generate client code from an OpenAPI specification. This library parses an OpenAPI JSON file and produces TypeScript enums, interfaces, and client functions that can be used to interact with an API.
 
 ## Features
