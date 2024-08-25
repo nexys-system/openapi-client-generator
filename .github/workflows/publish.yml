@@ -1,17 +1,13 @@
 name: Build and Deploy to GitHub Pages
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   build:
     name: Build Project
     runs-on: ubuntu-latest
-
     steps:
-        - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
