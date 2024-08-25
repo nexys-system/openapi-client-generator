@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.pre = void 0;
-exports.pre = `
+export const pre = `
 const genericJSONRequest = async (
   url: string,
   method: string,

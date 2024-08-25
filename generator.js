@@ -1,14 +1,8 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateClientCode = exports.generateClientFunctions = exports.generateTypes = exports.generateEnums = exports.loadOpenAPISpec = void 0;
-const fs_1 = __importDefault(require("fs"));
-const utils_js_1 = require("./utils.js");
+import fs from "fs";
+import { pre } from "./utils.js";
 const loadOpenAPISpec = (filePath) => {
     try {
-        const rawData = fs_1.default.readFileSync(filePath, "utf-8");
+        const rawData = fs.readFileSync(filePath, "utf-8");
         return JSON.parse(rawData);
     }
     catch (error) {
@@ -16,7 +10,6 @@ const loadOpenAPISpec = (filePath) => {
         process.exit(1);
     }
 };
-exports.loadOpenAPISpec = loadOpenAPISpec;
 const generateEnums = (schemas) => {
     let enums = "";
     for (const [name, schema] of Object.entries(schemas)) {
@@ -30,7 +23,6 @@ const generateEnums = (schemas) => {
     }
     return enums;
 };
-exports.generateEnums = generateEnums;
 const generateTypes = (schemas) => {
     var _a;
     let types = "";
@@ -47,7 +39,6 @@ const generateTypes = (schemas) => {
     }
     return types;
 };
-exports.generateTypes = generateTypes;
 const getTSType = (schema) => {
     switch (schema.type) {
         case "string":
@@ -105,12 +96,11 @@ const generateClientFunctions = (paths) => {
     }
     return functions;
 };
-exports.generateClientFunctions = generateClientFunctions;
 const generateClientCode = (openAPISpec) => {
     var _a, _b;
     const enums = generateEnums(((_a = openAPISpec.components) === null || _a === void 0 ? void 0 : _a.schemas) || {});
     const types = generateTypes(((_b = openAPISpec.components) === null || _b === void 0 ? void 0 : _b.schemas) || {});
     const functions = generateClientFunctions(openAPISpec.paths);
-    return `${utils_js_1.pre}\n\n${enums}${types}${functions}`;
+    return `${pre}\n\n${enums}${types}${functions}`;
 };
-exports.generateClientCode = generateClientCode;
+export { loadOpenAPISpec, generateEnums, generateTypes, generateClientFunctions, generateClientCode, };
